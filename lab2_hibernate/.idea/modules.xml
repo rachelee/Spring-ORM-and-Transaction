@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/lab2.iml" filepath="$PROJECT_DIR$/lab2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lab2_jpa.iml" filepath="$PROJECT_DIR$/lab2_jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab2_hibernate.iml" filepath="$PROJECT_DIR$/lab2_hibernate.iml" />
     </modules>
   </component>
 </project>

@@ -7,6 +7,8 @@
           <file>file://$MODULE_DIR$/src/main/java/resources/database/DataSource.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/resources/spring-config.xml</file>
           <file>file://$MODULE_DIR$/lab2_hibernate/src/spring-config.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/database/DataSource.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/edu/sjsu/cmpe275/lab2/Application.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -28,17 +30,14 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.2.7.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.4.6" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.hateoas:spring-hateoas:0.16.0.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.plugin:spring-plugin-core:1.1.0.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter:1.2.7.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.2.7.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate:hibernate-validator:5.1.3.Final" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-core:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-web:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-webmvc:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.4.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.4.6" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot:1.2.7.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.2.7.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.2.7.RELEASE" level="project" />
@@ -56,7 +55,6 @@
     <orderEntry type="library" exported="" name="Gradle: ch.qos.logback:logback-core:1.1.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-expression:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-beans:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-context:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-aop:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
@@ -74,23 +72,15 @@
     <orderEntry type="library" exported="" name="Gradle: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate.common:hibernate-commons-annotations:5.0.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: xml-apis:xml-apis:1.0.b2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-aop:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: javax.transaction:javax.transaction-api:1.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-orm:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.data:spring-data-jpa:1.7.4.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-aspects:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.aspectj:aspectjrt:1.8.7" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.aspectj:aspectjweaver:1.8.7" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-jdbc:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-jdbc:8.0.28" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-tx:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.data:spring-data-commons:1.9.4.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-juli:8.0.28" level="project" />
     <orderEntry type="library" exported="" name="Gradle: mysql:mysql-connector-java:5.1.6" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate:hibernate-entitymanager:5.0.3.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate:hibernate-core:5.0.3.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.jboss:jandex:2.0.0.CR1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-orm:4.2.2.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-beans:4.2.2.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-core:4.2.2.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-jdbc:4.2.2.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-tx:4.2.2.RELEASE" level="project" />
   </component>
 </module>
