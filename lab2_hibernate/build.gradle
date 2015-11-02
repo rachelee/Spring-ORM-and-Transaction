@@ -26,14 +26,19 @@ repositories {
 }
 
 dependencies {
+
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.plugin:spring-plugin-core:1.1.0.RELEASE")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    compile("org.springframework.hateoas:spring-hateoas")
+    compile("org.springframework.plugin:spring-plugin-core")
+    compile("com.jayway.jsonpath:json-path")
     testCompile("org.springframework.boot:spring-boot-starter-test")
-    compile("org.hibernate:hibernate-core:5.0.2.Final")
-    compile("org.hibernate:hibernate-entitymanager:5.0.3.Final")
-    compile('org.springframework:spring-jdbc:4.2.1.RELEASE')
-    compile("mysql:mysql-connector-java:5.1.6")
-    compile("org.springframework:spring-orm:4.2.2.RELEASE")
+//    compile("org.springframework.plugin:spring-plugin-core:1.1.0.RELEASE")
+    compile('org.springframework:spring-jdbc')
+    compile("mysql:mysql-connector-java")
+    compile("org.springframework:spring-orm")
+    compile("org.hibernate:hibernate-core")
+    compile("org.hibernate:hibernate-entitymanager")
 
 
 

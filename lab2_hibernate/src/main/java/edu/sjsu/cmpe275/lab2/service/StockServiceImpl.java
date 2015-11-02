@@ -5,7 +5,7 @@ import edu.sjsu.cmpe275.lab2.model.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+@Service
 public class StockServiceImpl implements StockService{
 
     @Autowired
@@ -28,8 +28,8 @@ public class StockServiceImpl implements StockService{
         stockDao.delete(stockId);
     }
 
-    public Stock findByStockCode(String stockCode){
-        return stockDao.findByStockCode(stockCode);
+    public Stock findByStockId(long stockId){
+        return stockDao.findByStockId(stockId);
     }
 
 }

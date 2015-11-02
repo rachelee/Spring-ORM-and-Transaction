@@ -11,9 +11,13 @@ public class StockController {
     @Autowired
     private StockService stockService;
 
+    @RequestMapping("/hello")
+    public String greeting() {
+        return "Hello World";
+    }
     @RequestMapping("/find")
-    public Stock greeting(@RequestParam(value="id", defaultValue="1") String id) {
-        return stockService.findByStockCode(id);
+    public Stock find(@RequestParam(value="stockId", defaultValue="1") long stockId) {
+        return stockService.findByStockId(stockId);
     }
 
 //    @RequestMapping(value="/create", method=RequestMethod.POST)

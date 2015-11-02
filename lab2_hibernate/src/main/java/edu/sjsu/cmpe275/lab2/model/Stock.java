@@ -1,13 +1,23 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name="stock")
 public class Stock implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue
+    @Column(name="STOCK_ID")
     private Long stockId;
+
+    @Column(name="STOCK_CODE", nullable = false)
     private String stockCode;
+
+    @Column(name="STOCK_NAME", nullable = false)
     private String stockName;
 
     public static long getSerialVersionUID() {

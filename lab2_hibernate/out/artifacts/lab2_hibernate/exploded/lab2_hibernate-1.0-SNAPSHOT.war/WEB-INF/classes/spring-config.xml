@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+    <context:annotation-config />
+    <context:component-scan base-package="edu.sjsu.cmpe275.lab2"/>
+
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="location">-->
+            <!--<value>database.properties</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="dataSource"-->
+          <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="${db.driver}" />-->
+        <!--<property name="url" value="${db.url}" />-->
+        <!--<property name="username" value="${db.username}" />-->
+        <!--<property name="password" value="${db.password}" />-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; Hibernate session factory &ndash;&gt;-->
+    <!--<bean id="sessionFactory"-->
+          <!--class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
+
+        <!--<property name="dataSource">-->
+            <!--<ref bean="dataSource"/>-->
+        <!--</property>-->
+
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+                <!--<prop key="hibernate.show_sql">true</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+
+        <!--<property name="mappingResources">-->
+            <!--<list>-->
+                <!--<value>/hibernate/Stock.hbm.xml</value>-->
+            <!--</list>-->
+        <!--</property>-->
+
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; Stock business object &ndash;&gt;-->
+    <!--<bean id="stockService" class="edu.sjsu.cmpe275.lab2.service.StockServiceImpl" >-->
+        <!--<property name="stockDao" ref="stockDao" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; Stock Data Access Object &ndash;&gt;-->
+    <!--<bean id="stockDao" class="edu.sjsu.cmpe275.lab2.dao.StockDaoImpl" >-->
+        <!--<property name="sessionFactory" ref="sessionFactory"></property>-->
+    <!--</bean>-->
+
+
+</beans>
