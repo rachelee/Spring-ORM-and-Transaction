@@ -1,26 +1,49 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by xiaoxiaoli on 10/30/15.
  */
+@Entity
+@Table(name="Person")
 public class Person {
-    private long id;
+    @Id
+    @GeneratedValue
+    private int id;
     private String firstname;
     private String lastname;
     private String email;
     private String description;
+    @Embedded
     private Address address;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="organization_id")
     private Organization org;
+
+    @ManyToMany
+    @JoinTable(
+            name="friendship",
+            joinColumns = {@JoinColumn(name="person_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name="friend_id", referencedColumnName = "id")}
+    )
     private List<Person> friends;
     // constructors, setters, getters, etc
+
+
+    public Person(String firstname, String lastname, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

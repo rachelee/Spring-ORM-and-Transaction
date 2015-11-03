@@ -1,13 +1,26 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import javax.persistence.Embeddable;
+
 /**
  * Created by xiaoxiaoli on 10/30/15.
  */
+@Embeddable
 public class Address {
     private String street;
     private String city;
     private String state;
     private String zip;
+
+    public Address() {
+
+    }
+    public Address(String street, String city, String state, String zip) {
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
 
     public String getStreet() {
         return street;
@@ -39,5 +52,10 @@ public class Address {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    @Override
+    public String toString() {
+        return this.street + ", " + this.city + ", "+this.state+", "+this.zip;
     }
 }

@@ -1,0 +1,31 @@
+create table ORGANIZATION (
+   id int NOT NULL auto_increment,
+   name VARCHAR(20) NOT NULL,
+   description VARCHAR(100) default NULL,
+   street   VARCHAR(100),
+   city   VARCHAR(100),
+   state  VARCHAR(10),
+   zip    VARCHAR(7),
+   PRIMARY KEY (id)
+   );
+
+create table PERSON (
+   id int NOT NULL auto_increment,
+   firstname VARCHAR(100) NOT NULL,
+   lastname  VARCHAR(100) NOT NULL,
+   email     VARCHAR(100) NOT NULL,
+   street   VARCHAR(100),
+   city   VARCHAR(100),
+   state  VARCHAR(10),
+   zip    VARCHAR(7),
+   organization_id int default NULL,
+   PRIMARY KEY (id),
+   FOREIGN KEY(organization_id) REFERENCES ORGANIZATION(id)
+);
+
+create table FRIENDSHIP (
+   person_id int NOT NULL,
+   friend_id int NOT NULL,
+   FOREIGN KEY(person_id) REFERENCES PERSON(id),
+   FOREIGN KEY(organization_id) REFERENCES ORGANIZATION(id)
+);

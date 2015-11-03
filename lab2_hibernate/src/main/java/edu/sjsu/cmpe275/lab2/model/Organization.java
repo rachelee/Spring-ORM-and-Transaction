@@ -1,19 +1,34 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+
 /**
  * Created by xiaoxiaoli on 10/30/15.
  */
+@Entity
+@Table(name="organization")
 public class Organization {
-    private long id;
+    @Id
+    @GeneratedValue
+    private int id;
     private String name;
     private String description;
+    @Embedded
     private Address address;
+
+    public Organization() {
+
+    }
+    public Organization(String name) {
+        this.name = name;
+    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

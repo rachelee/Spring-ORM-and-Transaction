@@ -29,6 +29,7 @@ dependencies {
 
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("com.fasterxml.jackson.core:jackson-databind")
+    compile("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3")
     compile("org.springframework.hateoas:spring-hateoas")
     compile("org.springframework.plugin:spring-plugin-core")
     compile("com.jayway.jsonpath:json-path")
@@ -39,6 +40,7 @@ dependencies {
     compile("org.springframework:spring-orm")
     compile("org.hibernate:hibernate-core")
     compile("org.hibernate:hibernate-entitymanager")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
 
 
