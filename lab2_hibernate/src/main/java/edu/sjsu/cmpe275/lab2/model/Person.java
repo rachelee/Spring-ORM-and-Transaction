@@ -1,6 +1,13 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,27 +26,34 @@ public class Person {
     @Embedded
     private Address address;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="organization_id")
     private Organization org;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name="friendship",
             joinColumns = {@JoinColumn(name="person_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name="friend_id", referencedColumnName = "id")}
     )
-    private List<Person> friends;
+    @JsonIgnore
+    private List<Person> friends =new ArrayList<>();
     // constructors, setters, getters, etc
 
+    @ManyToMany(mappedBy = "friends")
+    private List<Person> inverseFriends = new ArrayList<>();
 
+
+    public Person() {
+    }
     public Person(String firstname, String lastname, String email) {
+
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -95,12 +109,46 @@ public class Person {
         this.org = org;
     }
 
+    @JsonIgnore
     public List<Person> getFriends() {
         return friends;
     }
 
     public void setFriends(List<Person> friends) {
         this.friends = friends;
+    }
+
+    @JsonProperty("friends")
+    public List<Integer> getFriendList(){
+        List<Integer> res = new ArrayList<>();
+        for(Person person:friends){
+            res.add((int) person.getId());
+        }
+        return res;
+    }
+
+    public List<Person> getInverseFriends() {
+        return inverseFriends;
+    }
+
+    public void setInverseFriends(List<Person> inverseFriends) {
+        this.inverseFriends = inverseFriends;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Person person = (Person) obj;
+        if(this.id == person.getId()){
+            return true;
+        }
+
+        return false;
     }
 }
 

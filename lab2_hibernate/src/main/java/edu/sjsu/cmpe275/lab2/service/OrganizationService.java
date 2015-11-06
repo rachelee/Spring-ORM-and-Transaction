@@ -8,7 +8,7 @@ import edu.sjsu.cmpe275.lab2.model.Organization;
  */
 public interface OrganizationService {
     void save(Organization org);
-    void update(Organization org);
+    int update(Organization org);
     void delete(Organization org);
     Organization findByOrgId(int orgId);
 }

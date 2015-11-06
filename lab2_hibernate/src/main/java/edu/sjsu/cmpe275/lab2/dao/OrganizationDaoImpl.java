@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe275.lab2.dao;
 
+import edu.sjsu.cmpe275.lab2.controller.status.InvalidParameterException;
+import edu.sjsu.cmpe275.lab2.controller.status.ResourceNotFoundException;
 import edu.sjsu.cmpe275.lab2.model.Organization;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,21 +17,27 @@ public class OrganizationDaoImpl implements OrganizationDao{
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void saveOrUpdate(Organization org){
+    public int saveOrUpdate(Organization org){
         Session session = sessionFactory.openSession();
         Transaction tx = session.getTransaction();
         try {
             tx.begin();
+            if(org.getId()!=0){
+                Organization oldOrg = findByOrgId(org.getId());
+                if(oldOrg==null){
+                    return -1;
+                }
+            }
             session.saveOrUpdate(org);
             tx.commit();
         }catch(RuntimeException e) {
             tx.rollback();
-            ;
             throw e;
         }
         finally{
             session.close();
         }
+        return 0;
     }
 
     public void delete(Organization org){
@@ -37,14 +45,20 @@ public class OrganizationDaoImpl implements OrganizationDao{
         Transaction tx = session.getTransaction();
         try {
             tx.begin();
-            session.delete(org);
+            Organization toDelete = findByOrgId(org.getId());
+            if(toDelete==null){
+                throw new ResourceNotFoundException();
+            }
+            org.setName(toDelete.getName());
+            org.setAddress(toDelete.getAddress());
+            org.setDescription(toDelete.getDescription());
+            session.delete(toDelete);
             tx.commit();
         }catch(RuntimeException e) {
             if(tx!=null)
                 tx.rollback();
             e.printStackTrace();
-
-            throw e;
+            throw new InvalidParameterException();
         }
         finally{
             session.close();

@@ -17,8 +17,8 @@ public class OrganizationServiceImpl implements OrganizationService{
         orgDao.saveOrUpdate(org);
     }
 
-    public void update(Organization org){
-        orgDao.saveOrUpdate(org);
+    public int update(Organization org){
+        return orgDao.saveOrUpdate(org);
     }
 
     public void delete(Organization org){

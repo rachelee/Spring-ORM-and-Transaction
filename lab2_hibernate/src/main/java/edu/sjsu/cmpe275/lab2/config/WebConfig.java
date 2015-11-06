@@ -15,7 +15,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.favorPathExtension(false).
+        configurer.favorPathExtension(true).
                 favorParameter(true).
                 parameterName("format").
                 ignoreAcceptHeader(true).
