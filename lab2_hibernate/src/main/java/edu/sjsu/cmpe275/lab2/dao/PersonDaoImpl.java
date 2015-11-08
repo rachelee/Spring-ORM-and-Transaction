@@ -9,6 +9,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Created by xiaoxiaoli on 11/4/15.
@@ -54,9 +56,17 @@ public class PersonDaoImpl implements PersonDao{
             person.setDescription(toDelete.getDescription());
             person.setAddress(toDelete.getAddress());
             person.setOrg(toDelete.getOrg());
+            List<Person> friendList = toDelete.getInverseFriends();
+            for(Person p:friendList){
+                List<Person> list = p.getFriends();
+                list.remove(toDelete);
+                p.setFriends(list);
+                updateFriend(p);
+            }
             if(toDelete==null){
                 throw new ResourceNotFoundException();
             }
+
             session.delete(toDelete);
             tx.commit();
         }catch(RuntimeException e) {
@@ -84,7 +94,11 @@ public class PersonDaoImpl implements PersonDao{
             Hibernate.initialize(person.getFriends());
             Hibernate.initialize(person.getInverseFriends());
 //            for (Person p : person.getFriends()) {
-//                Hibernate.initialize(p);
+//                p.setFriends(null);
+//            }
+//
+//            for (Person p : person.getInverseFriends()) {
+//                p.setFriends(null);
 //            }
             tx.commit();
         }catch(RuntimeException e) {

@@ -30,17 +30,19 @@ public class Person {
     @JoinColumn(name="organization_id")
     private Organization org;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+
     @JoinTable(
             name="friendship",
             joinColumns = {@JoinColumn(name="person_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name="friend_id", referencedColumnName = "id")}
     )
-    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Person> friends =new ArrayList<>();
     // constructors, setters, getters, etc
 
     @ManyToMany(mappedBy = "friends")
+    @JsonBackReference
     private List<Person> inverseFriends = new ArrayList<>();
 
 
@@ -109,7 +111,6 @@ public class Person {
         this.org = org;
     }
 
-    @JsonIgnore
     public List<Person> getFriends() {
         return friends;
     }
@@ -124,6 +125,8 @@ public class Person {
         for(Person person:friends){
             res.add((int) person.getId());
         }
+        for(Person person:inverseFriends)
+            res.add((int) person.getId());
         return res;
     }
 

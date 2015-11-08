@@ -44,11 +44,15 @@ public class FriendServiceImpl implements FriendService {
         }
         try{
             List<Person> friendList = p1.getFriends();
-            if((friendList.remove(p2))==false){
+            List<Person> friendList2 = p2.getFriends();
+
+            if((friendList2.remove(p1))==false&&(friendList.remove(p2))==false){
                 throw new ResourceNotFoundException();
             }
             p1.setFriends(friendList);
             personDao.updateFriend(p1);
+            p2.setFriends(friendList2);
+            personDao.updateFriend(p2);
         }
         catch (RuntimeException e){
             throw e;
