@@ -30,7 +30,7 @@ public class Person {
     @JoinColumn(name="organization_id")
     private Organization org;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name="friendship",
             joinColumns = {@JoinColumn(name="person_id", referencedColumnName = "id")},

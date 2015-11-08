@@ -57,7 +57,7 @@ public class PersonDaoImpl implements PersonDao{
             if(toDelete==null){
                 throw new ResourceNotFoundException();
             }
-            //session.delete(toDelete);
+            session.delete(toDelete);
             tx.commit();
         }catch(RuntimeException e) {
             if(tx!=null)
@@ -82,6 +82,7 @@ public class PersonDaoImpl implements PersonDao{
                 throw new ResourceNotFoundException();
             }
             Hibernate.initialize(person.getFriends());
+            Hibernate.initialize(person.getInverseFriends());
 //            for (Person p : person.getFriends()) {
 //                Hibernate.initialize(p);
 //            }
