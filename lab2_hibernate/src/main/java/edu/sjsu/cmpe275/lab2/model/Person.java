@@ -36,12 +36,12 @@ public class Person {
             joinColumns = {@JoinColumn(name="person_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name="friend_id", referencedColumnName = "id")}
     )
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference
     private List<Person> friends =new ArrayList<>();
     // constructors, setters, getters, etc
 
-    @ManyToMany(mappedBy = "friends")
+    @ManyToMany(mappedBy = "friends", cascade = CascadeType.REFRESH)
     @JsonBackReference
     private List<Person> inverseFriends = new ArrayList<>();
 

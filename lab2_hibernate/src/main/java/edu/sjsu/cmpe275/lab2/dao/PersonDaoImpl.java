@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -43,31 +44,12 @@ public class PersonDaoImpl implements PersonDao{
             session.close();
         }
     }
-
     public void delete(Person person){
         Session session = sessionFactory.openSession();
         Transaction tx = session.getTransaction();
         try {
             tx.begin();
-            Person toDelete = findByPersonId(person.getId());
-            person.setFirstname(toDelete.getFirstname());
-            person.setLastname(toDelete.getLastname());
-            person.setEmail(toDelete.getEmail());
-            person.setDescription(toDelete.getDescription());
-            person.setAddress(toDelete.getAddress());
-            person.setOrg(toDelete.getOrg());
-            List<Person> friendList = toDelete.getInverseFriends();
-            for(Person p:friendList){
-                List<Person> list = p.getFriends();
-                list.remove(toDelete);
-                p.setFriends(list);
-                updateFriend(p);
-            }
-            if(toDelete==null){
-                throw new ResourceNotFoundException();
-            }
-
-            session.delete(toDelete);
+            session.delete(person);
             tx.commit();
         }catch(RuntimeException e) {
             if(tx!=null)
